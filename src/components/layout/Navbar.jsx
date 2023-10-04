@@ -2,22 +2,6 @@ import { FaGithub } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-// SEE NEW WAY TO SET DEFAULT PROPS (double-check) -->
-
-/*
-type NavbarProps = {
-  title: string;
-
-}
-
-const Navbar = ({ title: "GitHub Finder"}):
-
-NavbarProps) => {
-  return {title};
-);
-}
-*/
-
 function Navbar({ title }) {
   return (
     <nav className="navbar mb-12 shadow-lg bg-neutral text-neutral-content">
@@ -43,6 +27,7 @@ function Navbar({ title }) {
   );
 }
 
+// THIS IS BEING DEPRECATED
 Navbar.defaultProps = {
   title: "GitHub Finder",
 };
