@@ -5,7 +5,7 @@ function UserSearch() {
   const [text, setText] = useState("");
 
   // destructure = to pull out of!
-  const { users } = useContext(GithubContext);
+  const { users, searchUsers } = useContext(GithubContext);
 
   const handleChange = (e) => setText(e.target.value);
 
@@ -16,6 +16,8 @@ function UserSearch() {
       alert("Please enter something");
     } else {
       // @todo - search users
+      searchUsers(text); // fills userState; calls function in context
+
       setText("");
     }
   };
@@ -43,7 +45,7 @@ function UserSearch() {
           </div>
         </form>
       </div>
-      {users.length > 0 && (
+      {users > 0 && (
         <div>
           <button className="btn btn-ghost btn-lg">Clear</button>
         </div>
