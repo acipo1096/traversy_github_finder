@@ -21,7 +21,7 @@ function App() {
               <Routes>
                 <Route exact path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/user/:login" />
+                <Route path="/user/:login" element={<User />}/>
                 <Route path="/notfound" element={<NotFound />} />
                 <Route component={NotFound} />
               </Routes>
