@@ -10,7 +10,7 @@ const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN;
 export const GithubProvider = ({ children }) => {
   const initialState = {
     users: [],
-    user : {},
+    user: {},
     repos: [],
     loading: false,
   };
@@ -50,9 +50,8 @@ export const GithubProvider = ({ children }) => {
     });
 
     if (response.status === 404) {
-      window.location = '/notfound'
-    } 
-    else {
+      window.location = "/notfound";
+    } else {
       const data = await response.json();
 
       dispatch({
@@ -60,7 +59,6 @@ export const GithubProvider = ({ children }) => {
         payload: data,
       });
     }
-
   };
 
   // Get user repos
@@ -68,21 +66,24 @@ export const GithubProvider = ({ children }) => {
     setLoading();
 
     const params = new URLSearchParams({
-      sort: created,
-      per_page: 10 
+      sort: "created",
+      per_page: 10,
     });
 
-    const response = await fetch(`${GITHUB_URL}/users/${login}/repos?${params}`, {
-      headers: {
-        Authorization: `token ${GITHUB_TOKEN}`,
-      },
-    });
+    const response = await fetch(
+      `${GITHUB_URL}/users/${login}/repos?${params}`,
+      {
+        headers: {
+          Authorization: `token ${GITHUB_TOKEN}`,
+        },
+      }
+    );
 
     const data = await response.json();
 
     dispatch({
       type: "GET_REPOS",
-      payload: data
+      payload: data,
     });
   };
 
@@ -102,7 +103,7 @@ export const GithubProvider = ({ children }) => {
         searchUsers,
         clearUsers,
         getUser,
-        getUserRepos
+        getUserRepos,
       }}
       // Now we can access these values from ANYWHERE we want
     >
