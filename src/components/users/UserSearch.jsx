@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import GithubContext from "../../context/github/GithubContext";
 import AlertContext from "../../context/alert/AlertContext";
-import { searchUsers } from '../../context/github'
+import { searchUsers } from "../../context/github/GithubActions";
 
 function UserSearch() {
   const [text, setText] = useState("");
@@ -16,11 +16,11 @@ function UserSearch() {
     e.preventDefault();
 
     if (text === "") {
-      setAlert('Please enter something', 'error');
+      setAlert("Please enter something", "error");
     } else {
-      dispatchEvent({type: 'SET_LOADING'})
+      dispatch({ type: "SET_LOADING" });
       const users = await searchUsers(text); // fills userState; calls function in context
-      dispatchEvent({type: 'GET_USERS',payload: users})
+      dispatch({ type: "GET_USERS", payload: users });
 
       setText("");
     }
@@ -51,7 +51,10 @@ function UserSearch() {
       </div>
       {users > 0 && (
         <div>
-          <button onClick={() => dispatch({type: 'CLEAR_USERS '})} className="btn btn-ghost btn-lg">
+          <button
+            onClick={() => dispatch({ type: "CLEAR_USERS " })}
+            className="btn btn-ghost btn-lg"
+          >
             {/* Dispatches action to reducer, which clears user state */}
             Clear
           </button>

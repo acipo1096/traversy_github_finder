@@ -17,15 +17,7 @@ export const GithubProvider = ({ children }) => {
   return (
     <GithubContext.Provider
       value={{
-        ...state, // spreads across the state values. Replaces -
-
-        /*
-        users: state.users,
-        loading: state.loading,
-        user: state.user,
-        repos: state.repos,
-        */
-
+        ...state,
         dispatch,
       }}
       // Now we can access these values from ANYWHERE we want
