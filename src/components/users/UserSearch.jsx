@@ -49,13 +49,12 @@ function UserSearch() {
           </div>
         </form>
       </div>
-      {users > 0 && (
+      {users.length > 0 && (
         <div>
           <button
-            onClick={() => dispatch({ type: "CLEAR_USERS " })}
+            onClick={() => dispatch({ type: "CLEAR_USERS" })}
             className="btn btn-ghost btn-lg"
           >
-            {/* Dispatches action to reducer, which clears user state */}
             Clear
           </button>
         </div>
